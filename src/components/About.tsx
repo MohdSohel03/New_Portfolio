@@ -27,6 +27,10 @@ const About = () => {
               alt="Mohd Sohel Ansari"
               className="w-full h-full object-cover object-top absolute inset-0"
             />
+            {/* Gradient overlays to blend into dark background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
+            <div className="absolute inset-0 bg-gradient-to-l from-background/80 via-transparent to-background/30" />
           </motion.div>
 
           {/* Content */}
