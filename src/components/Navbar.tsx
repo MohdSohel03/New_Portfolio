@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
-const navItems = ["Home", "About", "Resume", "Services", "Skills", "Projects", "My Blog", "Contact"];
+const navItems = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
 
 const sectionIds: Record<string, string> = {
   Home: "home",
   About: "about",
-  Resume: "resume",
   Services: "services",
   Skills: "skills",
   Projects: "projects",
-  "My Blog": "blog",
   Contact: "contact",
 };
 
