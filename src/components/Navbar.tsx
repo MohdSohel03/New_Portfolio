@@ -2,21 +2,56 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
-const navItems = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
+const navItems = ["Home", "About", "Resume", "Services", "Skills", "Projects", "My Blog", "Contact"];
+
+const sectionIds: Record<string, string> = {
+  Home: "home",
+  About: "about",
+  Resume: "resume",
+  Services: "services",
+  Skills: "skills",
+  Projects: "projects",
+  "My Blog": "blog",
+  Contact: "contact",
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Determine active section
+      const sections = navItems.map((item) => ({
+        name: item,
+        el: document.getElementById(sectionIds[item]),
+      }));
+
+      let current = "Home";
+      for (const section of sections) {
+        if (section.el) {
+          const rect = section.el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            current = section.name;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (item: string) => {
+    const id = sectionIds[item];
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
+    setActiveSection(item);
   };
 
   return (
@@ -28,7 +63,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-5 px-4 md:px-8">
-        <button onClick={() => scrollTo("home")} className="text-xl font-bold text-foreground tracking-tight">
+        <button onClick={() => scrollTo("Home")} className="text-xl font-extrabold text-foreground tracking-tight uppercase">
           SOHEL
         </button>
 
@@ -38,9 +73,18 @@ const Navbar = () => {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="relative text-sm transition-colors duration-200 group py-1"
             >
-              {item}
+              <span className={activeSection === item ? "text-primary" : "text-muted-foreground group-hover:text-primary"}>
+                {item}
+              </span>
+              {activeSection === item && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute left-0 right-0 -bottom-1 h-[2px] bg-primary"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
             </button>
           ))}
         </div>
@@ -65,7 +109,9 @@ const Navbar = () => {
                 <button
                   key={item}
                   onClick={() => scrollTo(item)}
-                  className="text-muted-foreground hover:text-primary transition-colors text-left"
+                  className={`text-left transition-colors ${
+                    activeSection === item ? "text-primary" : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {item}
                 </button>
