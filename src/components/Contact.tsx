@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import aboutPhoto from "@/assets/about-photo.png";
 
 const contactInfo = [
