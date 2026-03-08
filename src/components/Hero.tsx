@@ -35,13 +35,13 @@ const Hero = () => {
           <div className="flex gap-4 mb-8">
             <button
               onClick={() => scrollTo("contact")}
-              className="px-7 py-3 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity"
+              className="px-7 py-3 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider rounded-full hover:opacity-90 transition-opacity"
             >
               Hire me
             </button>
             <button
               onClick={() => scrollTo("projects")}
-              className="px-7 py-3 border border-foreground/30 text-foreground font-semibold text-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-colors"
+              className="px-7 py-3 border border-foreground/30 text-foreground font-semibold text-sm uppercase tracking-wider rounded-full hover:border-primary hover:text-primary transition-colors"
             >
               My works
             </button>
