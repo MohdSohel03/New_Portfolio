@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import profilePhoto1 from "@/assets/profile-photo.png";
@@ -8,13 +8,6 @@ const photos = [profilePhoto1, profilePhoto2];
 
 const Hero = () => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPhoto((prev) => (prev + 1) % photos.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -73,7 +66,11 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex justify-center md:justify-end"
         >
-          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
+          <div
+            className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative cursor-pointer"
+            onMouseEnter={() => setCurrentPhoto(1)}
+            onMouseLeave={() => setCurrentPhoto(0)}
+          >
             <AnimatePresence mode="sync">
               <motion.img
                 key={currentPhoto}
@@ -87,18 +84,6 @@ const Hero = () => {
               />
             </AnimatePresence>
 
-            {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-              {photos.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentPhoto(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === currentPhoto ? "bg-primary" : "bg-foreground/30"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
