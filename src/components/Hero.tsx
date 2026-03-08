@@ -12,7 +12,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhoto((prev) => (prev + 1) % photos.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
