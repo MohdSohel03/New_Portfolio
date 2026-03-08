@@ -3,20 +3,36 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 const projects = [
   {
-    title: "AI Job & Internship Platform",
-    description: "AI-powered job recommendation platform developed for Smart India Hackathon. Matches candidates with opportunities using intelligent algorithms.",
-    tech: ["React", "Django", "MySQL"],
+    title: "AI-Based Career Counselor Application",
+    description: "An intelligent career guidance platform powered by AI that provides personalized career recommendations, skill assessments, and learning pathways tailored to individual goals.",
+    tech: ["React", "Python", "TensorFlow"],
     github: "https://github.com/",
     live: "#",
     color: "from-primary/20 to-accent/10",
   },
   {
-    title: "Freelancing Platform",
-    description: "A platform that connects freelancers and clients without extra commissions. Features secure payments and project management tools.",
-    tech: ["React", "Django"],
+    title: "AI Resume Builder Application",
+    description: "An intelligent resume builder that uses AI to generate optimized resumes, suggest improvements, and match job descriptions. Features ATS optimization and template library.",
+    tech: ["React", "Node.js", "OpenAI"],
     github: "https://github.com/",
     live: "#",
     color: "from-accent/20 to-primary/10",
+  },
+  {
+    title: "E-commerce Website",
+    description: "A full-featured e-commerce platform with product catalog, shopping cart, payment integration, and order management. Built for scalability and performance.",
+    tech: ["React", "Node.js", "MongoDB"],
+    github: "https://github.com/",
+    live: "#",
+    color: "from-primary/15 to-accent/20",
+  },
+  {
+    title: "Personal Fitness Tracking Web Application",
+    description: "A comprehensive fitness tracking app that monitors workouts, nutrition, progress, and goals. Features data visualization and personalized recommendations.",
+    tech: ["React", "Firebase", "Chart.js"],
+    github: "https://github.com/",
+    live: "#",
+    color: "from-accent/15 to-primary/20",
   },
   {
     title: "Inventory Management System",
