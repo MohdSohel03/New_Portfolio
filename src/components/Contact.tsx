@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import aboutPhoto from "@/assets/about-photo.png";
 
 const contactInfo = [
@@ -22,9 +23,18 @@ const Contact = () => {
       return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    toast.success("Message sent! I'll get back to you soon.");
-    setForm({ name: "", email: "", subject: "", message: "" });
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      subject: form.subject.trim() || null,
+      message: form.message.trim(),
+    });
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
+    } else {
+      toast.success("Message sent! I'll get back to you soon.");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    }
     setLoading(false);
   };
 
