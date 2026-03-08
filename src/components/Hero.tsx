@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import profilePhoto1 from "@/assets/profile-photo.png";
-import profilePhoto2 from "@/assets/profile-photo-2.jpg";
+import profilePhoto2 from "@/assets/profile-photo-2.png";
 
 const photos = [profilePhoto1, profilePhoto2];
 
@@ -12,7 +12,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhoto((prev) => (prev + 1) % photos.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -74,15 +74,15 @@ const Hero = () => {
           className="flex justify-center md:justify-end"
         >
           <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <motion.img
                 key={currentPhoto}
                 src={photos[currentPhoto]}
                 alt="Sohel Ansari"
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
                 className="w-full h-full object-cover object-top absolute inset-0"
               />
             </AnimatePresence>
