@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
-  SiHtml5, SiCss3, SiJavascript, SiReact, SiDjango, SiPython,
-  SiMysql, SiSupabase, SiGithub, SiVisualstudiocode,
+  SiHtml5, SiCss, SiJavascript, SiReact, SiDjango, SiPython,
+  SiMysql, SiSupabase, SiGithub,
 } from "react-icons/si";
 import { FiDatabase, FiServer, FiCpu } from "react-icons/fi";
 
