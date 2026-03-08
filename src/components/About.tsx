@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const details = [
   { label: "Name", value: "Sohel Ansari" },

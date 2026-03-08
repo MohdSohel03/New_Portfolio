@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const Hero = () => {
   const scrollTo = (id: string) => {
