@@ -66,7 +66,11 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex justify-center md:justify-end"
         >
-          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
+          <div
+            className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative cursor-pointer"
+            onMouseEnter={() => setCurrentPhoto(1)}
+            onMouseLeave={() => setCurrentPhoto(0)}
+          >
             <AnimatePresence mode="sync">
               <motion.img
                 key={currentPhoto}
