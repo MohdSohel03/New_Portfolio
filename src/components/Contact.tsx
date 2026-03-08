@@ -23,18 +23,33 @@ const Contact = () => {
       return;
     }
     setLoading(true);
+
+    // Save to database
     const { error } = await supabase.from("contact_messages").insert({
       name: form.name.trim(),
       email: form.email.trim(),
       subject: form.subject.trim() || null,
       message: form.message.trim(),
     });
+
     if (error) {
       toast.error("Failed to send message. Please try again.");
-    } else {
-      toast.success("Message sent! I'll get back to you soon.");
-      setForm({ name: "", email: "", subject: "", message: "" });
+      setLoading(false);
+      return;
     }
+
+    // Send email notification
+    supabase.functions.invoke("send-contact-email", {
+      body: {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim() || undefined,
+        message: form.message.trim(),
+      },
+    }).catch((err) => console.error("Email notification failed:", err));
+
+    toast.success("Message sent! I'll get back to you soon.");
+    setForm({ name: "", email: "", subject: "", message: "" });
     setLoading(false);
   };
 
