@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiBook, FiAward, FiCpu } from "react-icons/fi";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const About = () => {
   return (
