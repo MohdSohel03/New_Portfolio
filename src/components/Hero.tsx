@@ -24,7 +24,7 @@ const Hero = () => {
         >
           <p className="subheading">Hello!</p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
-            I'm <span className="text-primary italic">Sohel</span>
+            I'm <span className="text-primary italic">Mohd Sohel</span>
             <br />
             <span className="text-primary italic">Ansari</span>
           </h1>
@@ -75,7 +75,7 @@ const Hero = () => {
               <motion.img
                 key={currentPhoto}
                 src={photos[currentPhoto]}
-                alt="Sohel Ansari"
+                alt="Mohd Sohel Ansari"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
