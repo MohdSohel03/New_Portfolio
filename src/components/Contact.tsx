@@ -1,8 +1,15 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { FiSend } from "react-icons/fi";
+import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
 import aboutPhoto from "@/assets/about-photo.png";
+
+const contactInfo = [
+  { icon: FiMapPin, title: "ADDRESS", text: "Mumbai, India" },
+  { icon: FiPhone, title: "CONTACT NUMBER", text: "+91 XXXXX XXXXX" },
+  { icon: FiEmail, title: "EMAIL ADDRESS", text: "sohel@example.com" },
+  { icon: FiGlobe, title: "WEBSITE", text: "yoursite.com" },
+];
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -24,23 +31,55 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding">
       <div className="container mx-auto max-w-6xl">
+        {/* Header with watermark */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
-          <p className="subheading">Contact</p>
-          <h2 className="heading-lg">Contact Me</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-1">Contact Me</h2>
+          <p className="text-4xl md:text-6xl font-extrabold text-muted-foreground/15 -mt-6 md:-mt-8 mb-4 select-none">
+            Contact
+          </p>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            I'm always open to new opportunities and collaborations. Feel free to reach out!
+          </p>
         </motion.div>
 
+        {/* Contact Info Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+        >
+          {contactInfo.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
+                <item.icon className="text-primary" size={28} />
+              </div>
+              <h3 className="font-bold text-xs uppercase tracking-wider mb-2">{item.title}</h3>
+              <p className="text-muted-foreground text-sm">{item.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Form Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="grid md:grid-cols-2 overflow-hidden rounded-lg shadow-xl"
         >
-          {/* Left - Photo on dark background */}
+          {/* Left - Photo */}
           <div className="relative min-h-[300px] md:min-h-[500px] bg-background overflow-hidden">
             <img
               src={aboutPhoto}
@@ -49,7 +88,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* Right - Form on light background */}
+          {/* Right - Form */}
           <div className="bg-[hsl(210,30%,96%)] p-8 md:p-12 flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="space-y-5">
               <input
