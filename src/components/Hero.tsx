@@ -26,9 +26,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-[1.1]">
             I'm <span className="text-primary italic">Mohd</span>
             <br />
-            <span className="text-primary italic">Sohel</span>
-            <br />
-            <span className="text-primary italic">Ansari</span>
+            <span className="text-primary italic">Sohel Ansari</span>
           </h1>
           <h2 className="text-lg md:text-xl text-muted-foreground mb-8 font-light">
             A Freelance Web Designer
