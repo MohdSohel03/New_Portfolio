@@ -89,7 +89,7 @@ const Contact = () => {
           </div>
 
           {/* Right - Form */}
-          <div className="bg-[hsl(210,30%,96%)] p-8 md:p-12 flex flex-col justify-center">
+          <div className="bg-secondary p-8 md:p-12 flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
@@ -97,7 +97,7 @@ const Contact = () => {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 maxLength={100}
-                className="w-full px-5 py-4 bg-white border border-gray-200 rounded-md text-gray-800 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-5 py-4 bg-background border border-border rounded-md text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="email"
@@ -105,7 +105,7 @@ const Contact = () => {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 maxLength={255}
-                className="w-full px-5 py-4 bg-white border border-gray-200 rounded-md text-gray-800 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-5 py-4 bg-background border border-border rounded-md text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="text"
@@ -113,7 +113,7 @@ const Contact = () => {
                 value={form.subject}
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 maxLength={200}
-                className="w-full px-5 py-4 bg-white border border-gray-200 rounded-md text-gray-800 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-5 py-4 bg-background border border-border rounded-md text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
               />
               <textarea
                 placeholder="Message"
@@ -121,7 +121,7 @@ const Contact = () => {
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 rows={5}
                 maxLength={1000}
-                className="w-full px-5 py-4 bg-white border border-gray-200 rounded-md text-gray-800 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary transition-colors resize-vertical"
+                className="w-full px-5 py-4 bg-background border border-border rounded-md text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-vertical"
               />
               <button
                 type="submit"
