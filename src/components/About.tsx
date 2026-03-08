@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiBook, FiAward, FiCpu } from "react-icons/fi";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const About = () => {
   return (
@@ -26,8 +27,8 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="flex justify-center"
           >
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 glow-border flex items-center justify-center overflow-hidden">
-              <div className="text-6xl md:text-7xl font-bold gradient-text font-mono">SA</div>
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 glow-border overflow-hidden">
+              <img src={profilePhoto} alt="Sohel Ansari" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 
