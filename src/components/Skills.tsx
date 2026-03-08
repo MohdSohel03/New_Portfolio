@@ -41,7 +41,7 @@ const categories: { title: string; icon: React.ElementType; skills: Skill[] }[] 
     icon: FiCpu,
     skills: [
       { name: "GitHub", icon: SiGithub, level: 85 },
-      { name: "VS Code", icon: SiVisualstudiocode, level: 90 },
+      { name: "VS Code", icon: SiGithub, level: 90 },
       { name: "AI Tools", icon: FiCpu, level: 75 },
     ],
   },
