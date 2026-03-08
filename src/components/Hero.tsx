@@ -1,14 +1,8 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import profilePhoto1 from "@/assets/profile-photo.png";
-import profilePhoto2 from "@/assets/profile-photo-2.png";
-
-const photos = [profilePhoto1, profilePhoto2];
+import profilePhoto from "@/assets/profile-photo.png";
 
 const Hero = () => {
-  const [currentPhoto, setCurrentPhoto] = useState(0);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -59,31 +53,19 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Photo with crossfade animation */}
+        {/* Photo */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex justify-center md:justify-end"
         >
-          <div
-            className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative cursor-pointer"
-            onMouseEnter={() => setCurrentPhoto(1)}
-            onMouseLeave={() => setCurrentPhoto(0)}
-          >
-            <AnimatePresence mode="sync">
-              <motion.img
-                key={currentPhoto}
-                src={photos[currentPhoto]}
-                alt="Mohd Sohel Ansari"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.15, ease: "easeInOut" }}
-                className="w-full h-full object-cover object-top absolute inset-0"
-              />
-            </AnimatePresence>
-
+          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden">
+            <img
+              src={profilePhoto}
+              alt="Mohd Sohel Ansari"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
         </motion.div>
       </div>
