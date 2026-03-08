@@ -24,7 +24,7 @@ const Hero = () => {
         >
           <p className="subheading">Hello!</p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
-            I'm <span className="text-primary italic">Sohel</span>
+            I'm <span className="text-primary italic">Mohd Sohel</span>
             <br />
             <span className="text-primary italic">Ansari</span>
           </h1>
