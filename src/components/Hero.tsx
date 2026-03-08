@@ -74,15 +74,15 @@ const Hero = () => {
           className="flex justify-center md:justify-end"
         >
           <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="crossfade">
               <motion.img
                 key={currentPhoto}
                 src={photos[currentPhoto]}
                 alt="Sohel Ansari"
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
                 className="w-full h-full object-cover object-top absolute inset-0"
               />
             </AnimatePresence>
