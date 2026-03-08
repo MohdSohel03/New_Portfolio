@@ -24,12 +24,12 @@ const Hero = () => {
         >
           <p className="subheading">Hello!</p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
-            I'm <span className="text-primary">Sohel</span>
+            I'm <span className="text-primary italic">Sohel</span>
             <br />
-            <span className="text-primary">Ansari</span>
+            <span className="text-primary italic">Ansari</span>
           </h1>
           <h2 className="text-lg md:text-xl text-muted-foreground mb-8 font-light">
-            A Full Stack Developer
+            A Freelance Web Designer
           </h2>
 
           <div className="flex gap-4 mb-8">
