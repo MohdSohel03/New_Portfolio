@@ -9,13 +9,6 @@ const photos = [profilePhoto1, profilePhoto2];
 const Hero = () => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPhoto((prev) => (prev + 1) % photos.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
