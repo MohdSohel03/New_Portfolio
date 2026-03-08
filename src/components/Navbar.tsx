@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
-const navItems = ["Home"];
+const navItems = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
 
 const sectionIds: Record<string, string> = {
   Home: "home",
+  About: "about",
+  Services: "services",
+  Skills: "skills",
+  Projects: "projects",
+  Contact: "contact",
 };
 
 const Navbar = () => {
