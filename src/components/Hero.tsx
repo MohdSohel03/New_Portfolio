@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import profilePhoto1 from "@/assets/profile-photo.png";
