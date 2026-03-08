@@ -54,7 +54,6 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-mono text-sm mb-2">// my work</p>
           <h2 className="text-3xl md:text-4xl font-bold">
             Featured <span className="gradient-text">Projects</span>
           </h2>
