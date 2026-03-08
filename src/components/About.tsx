@@ -13,7 +13,6 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-mono text-sm mb-2">// about me</p>
           <h2 className="text-3xl md:text-4xl font-bold">
             Know Who I <span className="gradient-text">Am</span>
           </h2>

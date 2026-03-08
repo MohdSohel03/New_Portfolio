@@ -30,7 +30,6 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-mono text-sm mb-2">// get in touch</p>
           <h2 className="text-3xl md:text-4xl font-bold">
             Contact <span className="gradient-text">Me</span>
           </h2>
