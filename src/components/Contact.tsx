@@ -89,7 +89,7 @@ const Contact = () => {
           </div>
 
           {/* Right - Form */}
-          <div className="bg-[hsl(210,30%,96%)] p-8 md:p-12 flex flex-col justify-center">
+          <div className="bg-secondary p-8 md:p-12 flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
