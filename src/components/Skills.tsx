@@ -13,7 +13,7 @@ const categories: { title: string; icon: React.ElementType; skills: Skill[] }[] 
     icon: FiServer,
     skills: [
       { name: "HTML", icon: SiHtml5, level: 90 },
-      { name: "CSS", icon: SiCss3, level: 85 },
+      { name: "CSS", icon: SiCss, level: 85 },
       { name: "JavaScript", icon: SiJavascript, level: 85 },
       { name: "React", icon: SiReact, level: 80 },
     ],
