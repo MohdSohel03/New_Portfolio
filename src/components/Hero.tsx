@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import profilePhoto1 from "@/assets/profile-photo.png";
-import profilePhoto2 from "@/assets/profile-photo-2.jpg";
+import profilePhoto2 from "@/assets/profile-photo-2.png";
 
 const photos = [profilePhoto1, profilePhoto2];
 
