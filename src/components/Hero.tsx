@@ -1,8 +1,21 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import profilePhoto from "@/assets/profile-photo.png";
+import profilePhoto1 from "@/assets/profile-photo.png";
+import profilePhoto2 from "@/assets/profile-photo-2.jpg";
+
+const photos = [profilePhoto1, profilePhoto2];
 
 const Hero = () => {
+  const [currentPhoto, setCurrentPhoto] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhoto((prev) => (prev + 1) % photos.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -53,19 +66,39 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Photo */}
+        {/* Photo with crossfade animation */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex justify-center md:justify-end"
         >
-          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden">
-            <img
-              src={profilePhoto}
-              alt="Sohel Ansari"
-              className="w-full h-full object-cover object-top"
-            />
+          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentPhoto}
+                src={photos[currentPhoto]}
+                alt="Sohel Ansari"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.8 }}
+                className="w-full h-full object-cover object-top absolute inset-0"
+              />
+            </AnimatePresence>
+
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {photos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPhoto(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                    i === currentPhoto ? "bg-primary" : "bg-foreground/30"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
