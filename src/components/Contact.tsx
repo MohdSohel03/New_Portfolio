@@ -1,10 +1,10 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { FiSend, FiMail, FiMapPin } from "react-icons/fi";
+import { FiSend, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { toast } from "sonner";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -14,83 +14,79 @@ const Contact = () => {
       return;
     }
     setLoading(true);
-    // Supabase integration placeholder — enable Lovable Cloud to persist messages
     await new Promise((r) => setTimeout(r, 800));
     toast.success("Message sent! I'll get back to you soon.");
-    setForm({ name: "", email: "", message: "" });
+    setForm({ name: "", email: "", subject: "", message: "" });
     setLoading(false);
   };
 
+  const inputClass =
+    "w-full px-4 py-3 bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors";
+
   return (
-    <section id="contact" className="section-padding relative">
-      <div className="container mx-auto max-w-3xl">
+    <section id="contact" className="section-padding">
+      <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Contact <span className="gradient-text">Me</span>
-          </h2>
+          <p className="subheading">Contact</p>
+          <h2 className="heading-lg">Contact Me</h2>
         </motion.div>
 
-        <motion.div
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {[
+            { icon: FiMapPin, title: "Address", text: "Mumbai, India" },
+            { icon: FiPhone, title: "Phone", text: "+91 XXXXX XXXXX" },
+            { icon: FiMail, title: "Email", text: "sohel@example.com" },
+          ].map((item) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 flex items-center justify-center rounded-full">
+                <item.icon className="text-primary" size={24} />
+              </div>
+              <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
+              <p className="text-muted-foreground text-sm">{item.text}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid md:grid-cols-5 gap-8"
+          className="max-w-2xl mx-auto space-y-4"
         >
-          {/* Info */}
-          <div className="md:col-span-2 flex flex-col gap-6">
-            <div className="glass-card p-5 hover-glow">
-              <FiMail className="text-primary mb-2" size={22} />
-              <p className="text-sm font-semibold">Email</p>
-              <p className="text-xs text-muted-foreground">sohel@example.com</p>
-            </div>
-            <div className="glass-card p-5 hover-glow">
-              <FiMapPin className="text-primary mb-2" size={22} />
-              <p className="text-sm font-semibold">Location</p>
-              <p className="text-xs text-muted-foreground">Mumbai, India</p>
-            </div>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={form.name}
+          <div className="grid sm:grid-cols-2 gap-4">
+            <input type="text" placeholder="Your Name" value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-              maxLength={100}
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              value={form.email}
+              className={inputClass} maxLength={100} />
+            <input type="email" placeholder="Your Email" value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors"
-              maxLength={255}
-            />
-            <textarea
-              placeholder="Your Message"
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              rows={5}
-              className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors resize-none"
-              maxLength={1000}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all disabled:opacity-50"
-            >
+              className={inputClass} maxLength={255} />
+          </div>
+          <input type="text" placeholder="Subject" value={form.subject}
+            onChange={(e) => setForm({ ...form, subject: e.target.value })}
+            className={inputClass} maxLength={200} />
+          <textarea placeholder="Message" value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            rows={6} className={`${inputClass} resize-none`} maxLength={1000} />
+          <button type="submit" disabled={loading}
+            className="px-8 py-3 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity disabled:opacity-50">
+            <span className="flex items-center gap-2">
               <FiSend size={14} />
               {loading ? "Sending..." : "Send Message"}
-            </button>
-          </form>
-        </motion.div>
+            </span>
+          </button>
+        </motion.form>
       </div>
     </section>
   );

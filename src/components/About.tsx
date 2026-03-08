@@ -1,64 +1,63 @@
 import { motion } from "framer-motion";
-import { FiBook, FiAward, FiCpu } from "react-icons/fi";
 import profilePhoto from "@/assets/profile-photo.jpg";
+
+const details = [
+  { label: "Name", value: "Sohel Ansari" },
+  { label: "Education", value: "BSc IT, Mumbai" },
+  { label: "Email", value: "sohel@example.com" },
+  { label: "Location", value: "Mumbai, India" },
+];
 
 const About = () => {
   return (
-    <section id="about" className="section-padding relative">
-      <div className="container mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Know Who I <span className="gradient-text">Am</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="section-padding bg-card/40">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Photo */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
             className="flex justify-center"
           >
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 glow-border overflow-hidden">
+            <div className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20">
               <img src={profilePhoto} alt="Sohel Ansari" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 
+          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
-            <p className="text-muted-foreground leading-relaxed mb-6 text-base md:text-lg">
+            <p className="subheading">About</p>
+            <h2 className="heading-lg mb-6">About Me</h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
               I am a BSc IT student and Full Stack Developer based in Mumbai. I specialize in
               building scalable web applications using React, Django, and AI technologies.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Passionate about problem solving and innovation, I strive to create impactful
-              digital solutions that make a difference.
+              Passionate about problem solving and innovation.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                { icon: FiBook, label: "BSc IT", sub: "Mumbai" },
-                { icon: FiAward, label: "SIH Finalist", sub: "Hackathon" },
-                { icon: FiCpu, label: "AI & ML", sub: "Enthusiast" },
-              ].map((item, i) => (
-                <div key={i} className="glass-card hover-glow p-4 text-center">
-                  <item.icon className="mx-auto mb-2 text-primary" size={24} />
-                  <p className="font-semibold text-sm">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.sub}</p>
+            <div className="space-y-3 mb-8">
+              {details.map((d) => (
+                <div key={d.label} className="flex gap-4">
+                  <span className="font-semibold text-sm min-w-[100px]">{d.label}:</span>
+                  <span className="text-muted-foreground text-sm">{d.value}</span>
                 </div>
               ))}
             </div>
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-block px-7 py-3 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity"
+            >
+              Contact Me
+            </a>
           </motion.div>
         </div>
       </div>
