@@ -23,8 +23,10 @@ const Hero = () => {
           transition={{ duration: 0.7 }}
         >
           <p className="subheading">Hello!</p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
-            I'm <span className="text-primary italic">Mohd Sohel</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-[1.1]">
+            I'm <span className="text-primary italic">Mohd</span>
+            <br />
+            <span className="text-primary italic">Sohel</span>
             <br />
             <span className="text-primary italic">Ansari</span>
           </h1>
