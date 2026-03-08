@@ -47,7 +47,7 @@ const Hero = () => {
             </button>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-6">
             <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors">
               <FiGithub size={20} />
