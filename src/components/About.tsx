@@ -21,7 +21,7 @@ const About = () => {
             className="flex justify-center"
           >
             <div className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20">
-              <img src={aboutPhoto} alt="Sohel Ansari" className="w-full h-full object-cover" />
+              <img src={aboutPhoto} alt="Mohd Sohel Ansari" className="w-full h-full object-cover" />
             </div>
           </motion.div>
 

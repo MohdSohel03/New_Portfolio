@@ -75,7 +75,7 @@ const Hero = () => {
               <motion.img
                 key={currentPhoto}
                 src={photos[currentPhoto]}
-                alt="Sohel Ansari"
+                alt="Mohd Sohel Ansari"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
