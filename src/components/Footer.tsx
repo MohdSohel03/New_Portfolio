@@ -1,14 +1,11 @@
-import { FiGithub, FiLinkedin, FiHeart } from "react-icons/fi";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 const Footer = () => {
   return (
     <footer className="border-t border-border py-8 px-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground font-mono">
-          &lt;/&gt; by <span className="text-primary">Sohel Ansari</span>
-        </p>
-        <p className="text-xs text-muted-foreground flex items-center gap-1">
-          Made with <FiHeart className="text-primary" size={12} /> using React
+        <p className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} <span className="text-primary">Sohel Ansari</span>. All rights reserved.
         </p>
         <div className="flex gap-4">
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer"

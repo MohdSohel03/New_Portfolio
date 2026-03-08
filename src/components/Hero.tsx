@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { FiGithub, FiLinkedin, FiArrowRight } from "react-icons/fi";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
   const scrollTo = (id: string) => {
@@ -8,92 +8,65 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center section-padding grid-bg overflow-hidden">
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto text-center relative z-10">
+    <section id="home" className="relative min-h-screen flex items-center section-padding overflow-hidden">
+      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+        {/* Text */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          <p className="text-primary font-mono text-sm mb-4 tracking-wider">👋 Hello, I'm</p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
-            Sohel <span className="gradient-text">Ansari</span>
+          <p className="subheading">Hello!</p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
+            I'm <span className="text-primary">Sohel</span>
+            <br />
+            <span className="text-primary">Ansari</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-muted-foreground mb-6 font-medium">
-            Full Stack Developer
+          <h2 className="text-lg md:text-xl text-muted-foreground mb-8 font-light">
+            A Full Stack Developer
           </h2>
+
+          <div className="flex gap-4 mb-8">
+            <button
+              onClick={() => scrollTo("contact")}
+              className="px-7 py-3 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity"
+            >
+              Hire me
+            </button>
+            <button
+              onClick={() => scrollTo("projects")}
+              className="px-7 py-3 border border-foreground/30 text-foreground font-semibold text-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-colors"
+            >
+              My works
+            </button>
+          </div>
+
+          <div className="flex gap-4">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors">
+              <FiGithub size={20} />
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors">
+              <FiLinkedin size={20} />
+            </a>
+          </div>
         </motion.div>
 
+        {/* Photo */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="h-8 mb-8"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex justify-center md:justify-end"
         >
-          <span className="font-mono text-primary text-sm md:text-base">
-            <TypeAnimation
-              sequence={[
-                "React Developer",
-                2000,
-                "Django Developer",
-                2000,
-                "AI Enthusiast",
-                2000,
-              ]}
-              repeat={Infinity}
-              speed={50}
+          <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden">
+            <img
+              src={profilePhoto}
+              alt="Sohel Ansari"
+              className="w-full h-full object-cover object-top"
             />
-          </span>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="text-muted-foreground max-w-xl mx-auto mb-10 text-base md:text-lg leading-relaxed"
-        >
-          I build AI-powered, scalable web applications with modern technologies.
-          Turning ideas into elegant digital solutions.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-        >
-          <button
-            onClick={() => scrollTo("projects")}
-            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all"
-          >
-            View Projects <FiArrowRight />
-          </button>
-          <button
-            onClick={() => scrollTo("contact")}
-            className="flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/40 text-primary font-semibold hover:bg-primary/10 transition-all"
-          >
-            Hire Me
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-          className="flex items-center justify-center gap-5"
-        >
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
-            className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all text-muted-foreground">
-            <FiGithub size={20} />
-          </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer"
-            className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all text-muted-foreground">
-            <FiLinkedin size={20} />
-          </a>
+          </div>
         </motion.div>
       </div>
     </section>
