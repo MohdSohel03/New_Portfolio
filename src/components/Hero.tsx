@@ -74,7 +74,7 @@ const Hero = () => {
           className="flex justify-center md:justify-end"
         >
           <div className="w-72 h-80 md:w-[420px] md:h-[500px] overflow-hidden relative">
-            <AnimatePresence mode="crossfade">
+            <AnimatePresence mode="sync">
               <motion.img
                 key={currentPhoto}
                 src={photos[currentPhoto]}
