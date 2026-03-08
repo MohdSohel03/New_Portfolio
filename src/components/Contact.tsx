@@ -90,6 +90,7 @@ const Contact = () => {
 
           {/* Right - Form */}
           <div className="bg-secondary p-8 md:p-12 flex flex-col justify-center">
+            <h3 className="text-2xl font-bold text-foreground mb-6">Contact Me</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
