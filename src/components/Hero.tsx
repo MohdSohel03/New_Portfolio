@@ -84,18 +84,6 @@ const Hero = () => {
               />
             </AnimatePresence>
 
-            {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-              {photos.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentPhoto(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === currentPhoto ? "bg-primary" : "bg-foreground/30"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
