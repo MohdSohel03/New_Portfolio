@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import aboutPhoto from "@/assets/about-photo.png";
 
 const details = [
-  { label: "Name", value: "Sohel Ansari" },
+  { label: "Name", value: "Mohd Sohel Ansari" },
   { label: "Education", value: "BSc IT, Mumbai" },
   { label: "Email", value: "sohel@example.com" },
   { label: "Location", value: "Mumbai, India" },
