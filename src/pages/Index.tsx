@@ -18,6 +18,7 @@ const Index = () => {
       <Services />
       <Skills />
       <Projects />
+      <Freelance />
       <Contact />
       <Footer />
       <ScrollToTop />
