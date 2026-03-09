@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import careerImg from "@/assets/project-career-counselor.jpg";
+import resumeImg from "@/assets/project-resume-builder.jpg";
+import ecommerceImg from "@/assets/project-ecommerce.jpg";
+import fitnessImg from "@/assets/project-fitness.jpg";
+import inventoryImg from "@/assets/project-inventory.jpg";
 
 const projects = [
   {
