@@ -73,11 +73,13 @@ const Projects = () => {
               transition={{ delay: i * 0.1 }}
               className="group relative overflow-hidden bg-secondary"
             >
-              {/* Placeholder image area */}
-              <div className="h-48 bg-muted flex items-center justify-center">
-                <span className="text-2xl font-bold text-muted-foreground/40 uppercase tracking-wider">
-                  {project.title.split(" ").slice(0, 2).join(" ")}
-                </span>
+              {/* Project image */}
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
 
               {/* Overlay on hover */}
