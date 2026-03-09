@@ -39,18 +39,24 @@ const Contact = () => {
         return;
       }
 
-      // Send email via EmailJS
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+      // Send email via Supabase Edge Function (Resend)
+      const { error: emailError } = await supabase.functions.invoke(
+        "send-contact-email",
         {
-          from_name: form.name.trim(),
-          from_email: form.email.trim(),
-          subject: form.subject.trim() || "New contact form submission",
-          message: form.message.trim(),
-        },
-        EMAILJS_PUBLIC_KEY
+          body: {
+            name: form.name.trim(),
+            email: form.email.trim(),
+            subject: form.subject.trim() || undefined,
+            message: form.message.trim(),
+          },
+        }
       );
+
+      if (emailError) {
+        console.error("Error invoking send-contact-email:", emailError);
+        toast.error("Message saved, but email notification failed. Please try again.");
+        return;
+      }
 
       toast.success("Message sent! I'll get back to you soon.");
       setForm({ name: "", email: "", subject: "", message: "" });
