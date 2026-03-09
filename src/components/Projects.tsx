@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import careerImg from "@/assets/project-career-counselor.jpg";
+import resumeImg from "@/assets/project-resume-builder.jpg";
+import ecommerceImg from "@/assets/project-ecommerce.jpg";
+import fitnessImg from "@/assets/project-fitness.jpg";
+import inventoryImg from "@/assets/project-inventory.jpg";
 
 const projects = [
   {
     title: "AI-Based Career Counselor Application",
     description: "An intelligent career guidance platform powered by AI that provides personalized career recommendations and learning pathways.",
     tech: ["React", "Python", "TensorFlow"],
+    image: careerImg,
     github: "https://github.com/MohdSohel03/AI-Based-Career-Counselor-Application",
     live: "#",
   },
@@ -13,6 +19,7 @@ const projects = [
     title: "AI Resume Builder Application",
     description: "An intelligent resume builder that uses AI to generate optimized resumes, suggest improvements, and match job descriptions.",
     tech: ["React", "Node.js", "OpenAI"],
+    image: resumeImg,
     github: "https://github.com/MohdSohel03/AI-Resume-Builder-Application",
     live: "#",
   },
@@ -20,6 +27,7 @@ const projects = [
     title: "E-commerce Website",
     description: "A full-featured e-commerce platform with product catalog, shopping cart, payment integration, and order management.",
     tech: ["React", "Node.js", "MongoDB"],
+    image: ecommerceImg,
     github: "https://github.com/",
     live: "#",
   },
@@ -27,6 +35,7 @@ const projects = [
     title: "Personal Fitness Tracking Web Application",
     description: "A comprehensive fitness tracking app that monitors workouts, nutrition, progress, and goals with data visualization.",
     tech: ["React", "Firebase", "Chart.js"],
+    image: fitnessImg,
     github: "https://github.com/MohdSohel03/Personal-Fitness-Tracking-Web-Application",
     live: "#",
   },
@@ -34,6 +43,7 @@ const projects = [
     title: "Inventory Management System",
     description: "A system to track inventory, stock levels, and generate detailed reports with efficient data processing pipelines.",
     tech: ["Python", "SQL"],
+    image: inventoryImg,
     github: "https://github.com/MohdSohel03/inventory-pro-hub",
     live: "#",
   },
@@ -63,11 +73,13 @@ const Projects = () => {
               transition={{ delay: i * 0.1 }}
               className="group relative overflow-hidden bg-secondary"
             >
-              {/* Placeholder image area */}
-              <div className="h-48 bg-muted flex items-center justify-center">
-                <span className="text-2xl font-bold text-muted-foreground/40 uppercase tracking-wider">
-                  {project.title.split(" ").slice(0, 2).join(" ")}
-                </span>
+              {/* Project image */}
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
 
               {/* Overlay on hover */}
