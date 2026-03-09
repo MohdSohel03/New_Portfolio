@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import emailjs from "@emailjs/browser";
 import aboutPhoto from "@/assets/about-photo.png";
+
+// EmailJS Configuration - Replace these with your actual values
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 
 const contactInfo = [
   { icon: FiMapPin, title: "ADDRESS", text: "Mumbai, India" },
