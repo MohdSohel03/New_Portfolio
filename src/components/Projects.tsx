@@ -1,55 +1,47 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { supabase } from "@/integrations/supabase/client";
+
+// Fallback images for projects without image_url
 import careerImg from "@/assets/project-career-counselor.jpg";
 import resumeImg from "@/assets/project-resume-builder.jpg";
 import ecommerceImg from "@/assets/project-ecommerce.jpg";
 import fitnessImg from "@/assets/project-fitness.jpg";
 import inventoryImg from "@/assets/project-inventory.jpg";
 
-const projects = [
-  {
-    title: "AI-Based Career Counselor Application",
-    description: "An intelligent career guidance platform powered by AI that provides personalized career recommendations and learning pathways.",
-    tech: ["React", "Python", "TensorFlow"],
-    image: careerImg,
-    github: "https://github.com/MohdSohel03/AI-Based-Career-Counselor-Application",
-    live: "#",
-  },
-  {
-    title: "AI Resume Builder Application",
-    description: "An intelligent resume builder that uses AI to generate optimized resumes, suggest improvements, and match job descriptions.",
-    tech: ["React", "Node.js", "OpenAI"],
-    image: resumeImg,
-    github: "https://github.com/MohdSohel03/AI-Resume-Builder-Application",
-    live: "#",
-  },
-  {
-    title: "E-commerce Website",
-    description: "A full-featured e-commerce platform with product catalog, shopping cart, payment integration, and order management.",
-    tech: ["React", "Node.js", "MongoDB"],
-    image: ecommerceImg,
-    github: "https://github.com/",
-    live: "#",
-  },
-  {
-    title: "Personal Fitness Tracking Web Application",
-    description: "A comprehensive fitness tracking app that monitors workouts, nutrition, progress, and goals with data visualization.",
-    tech: ["React", "Firebase", "Chart.js"],
-    image: fitnessImg,
-    github: "https://github.com/MohdSohel03/Personal-Fitness-Tracking-Web-Application",
-    live: "#",
-  },
-  {
-    title: "Inventory Management System",
-    description: "A system to track inventory, stock levels, and generate detailed reports with efficient data processing pipelines.",
-    tech: ["Python", "SQL"],
-    image: inventoryImg,
-    github: "https://github.com/MohdSohel03/inventory-pro-hub",
-    live: "https://invent-pro-ip.vercel.app/",
-  },
-];
+const fallbackImages: Record<string, string> = {
+  "AI-Based Career Counselor Application": careerImg,
+  "AI Resume Builder Application": resumeImg,
+  "E-commerce Website": ecommerceImg,
+  "Personal Fitness Tracking Web Application": fitnessImg,
+  "Inventory Management System": inventoryImg,
+};
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tech: string[];
+  github_url: string | null;
+  live_url: string | null;
+  image_url: string | null;
+  sort_order: number;
+}
 
 const Projects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    supabase.from("projects").select("*").order("sort_order").then(({ data }) => {
+      if (data) setProjects(data);
+    });
+  }, []);
+
+  const getImage = (project: Project) => {
+    return project.image_url || fallbackImages[project.title] || "/placeholder.svg";
+  };
+
   return (
     <section id="projects" className="section-padding bg-card/40">
       <div className="container mx-auto max-w-6xl">
@@ -65,35 +57,37 @@ const Projects = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="group relative overflow-hidden bg-secondary"
             >
-              {/* Project image */}
               <div className="h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={getImage(project)}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
 
-              {/* Overlay on hover */}
               <div className="absolute inset-0 bg-primary/90 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6">
                 <h3 className="text-primary-foreground font-bold text-center mb-3">{project.title}</h3>
                 <p className="text-primary-foreground/80 text-xs text-center mb-4">{project.description}</p>
                 <div className="flex gap-3">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="p-2 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
-                    <FiGithub size={16} />
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer"
-                    className="p-2 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
-                    <FiExternalLink size={16} />
-                  </a>
+                  {project.github_url && (
+                    <a href={project.github_url} target="_blank" rel="noopener noreferrer"
+                      className="p-2 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
+                      <FiGithub size={16} />
+                    </a>
+                  )}
+                  {project.live_url && project.live_url !== "#" && (
+                    <a href={project.live_url} target="_blank" rel="noopener noreferrer"
+                      className="p-2 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
+                      <FiExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
               </div>
 
