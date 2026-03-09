@@ -3,13 +3,7 @@ import { motion } from "framer-motion";
 import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import emailjs from "@emailjs/browser";
 import aboutPhoto from "@/assets/about-photo.png";
-
-// EmailJS Configuration
-const EMAILJS_SERVICE_ID = "service_rs7spkg";
-const EMAILJS_TEMPLATE_ID = "template_9h4il5h";
-const EMAILJS_PUBLIC_KEY = "gfw60VbCzbF5d1FJX";
 
 const contactInfo = [
   { icon: FiMapPin, title: "ADDRESS", text: "Mumbai, India" },
@@ -45,18 +39,24 @@ const Contact = () => {
         return;
       }
 
-      // Send email via EmailJS
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+      // Send email via Supabase Edge Function (Resend)
+      const { error: emailError } = await supabase.functions.invoke(
+        "send-contact-email",
         {
-          from_name: form.name.trim(),
-          from_email: form.email.trim(),
-          subject: form.subject.trim() || "New contact form submission",
-          message: form.message.trim(),
-        },
-        EMAILJS_PUBLIC_KEY
+          body: {
+            name: form.name.trim(),
+            email: form.email.trim(),
+            subject: form.subject.trim() || undefined,
+            message: form.message.trim(),
+          },
+        }
       );
+
+      if (emailError) {
+        console.error("Error invoking send-contact-email:", emailError);
+        toast.error("Message saved, but email notification failed. Please try again.");
+        return;
+      }
 
       toast.success("Message sent! I'll get back to you soon.");
       setForm({ name: "", email: "", subject: "", message: "" });
