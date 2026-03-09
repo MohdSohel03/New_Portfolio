@@ -27,7 +27,7 @@ const projects = [
     title: "Personal Fitness Tracking Web Application",
     description: "A comprehensive fitness tracking app that monitors workouts, nutrition, progress, and goals with data visualization.",
     tech: ["React", "Firebase", "Chart.js"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/Personal-Fitness-Tracking-Web-Application",
     live: "#",
   },
   {
