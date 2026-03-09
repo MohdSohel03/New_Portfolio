@@ -34,7 +34,7 @@ const projects = [
     title: "Inventory Management System",
     description: "A system to track inventory, stock levels, and generate detailed reports with efficient data processing pipelines.",
     tech: ["Python", "SQL"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/inventory-pro-hub",
     live: "#",
   },
 ];
