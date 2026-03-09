@@ -21,27 +21,25 @@ const Skills = () => {
           <h2 className="heading-lg">My Skills</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-          {skills.map((skill, i) => (
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-8">
+          {skillPairs.map((pair, i) => (
             <motion.div
-              key={skill.name}
+              key={i}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: i * 0.1 }}
+              className="flex items-center justify-between gap-8"
             >
-              <div className="flex justify-between mb-2">
-                <span className="text-sm font-medium">{skill.name}</span>
-                <span className="text-sm text-muted-foreground">{skill.level}%</span>
+              <div className="flex-1 text-center">
+                <div className="py-4 px-6 bg-secondary/60 border border-border hover:border-primary/40 transition-colors">
+                  <span className="text-sm font-medium">{pair.left}</span>
+                </div>
               </div>
-              <div className="h-2 bg-secondary overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className="h-full bg-primary"
-                />
+              <div className="flex-1 text-center">
+                <div className="py-4 px-6 bg-secondary/60 border border-border hover:border-primary/40 transition-colors">
+                  <span className="text-sm font-medium">{pair.right}</span>
+                </div>
               </div>
             </motion.div>
           ))}
