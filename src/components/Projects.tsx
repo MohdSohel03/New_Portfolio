@@ -13,7 +13,7 @@ const projects = [
     title: "AI Resume Builder Application",
     description: "An intelligent resume builder that uses AI to generate optimized resumes, suggest improvements, and match job descriptions.",
     tech: ["React", "Node.js", "OpenAI"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/AI-Resume-Builder-Application",
     live: "#",
   },
   {
