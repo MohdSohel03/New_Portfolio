@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 
-const skills = [
-  { name: "HTML5", level: 90 },
-  { name: "CSS3", level: 85 },
-  { name: "JavaScript", level: 85 },
-  { name: "React", level: 80 },
-  { name: "Python", level: 85 },
-  { name: "Django", level: 80 },
-  { name: "MySQL", level: 75 },
-  { name: "GitHub", level: 85 },
+const skillPairs = [
+  { left: "React + JavaScript", right: "React + TypeScript" },
+  { left: "Bootstrap", right: "TailwindCSS" },
+  { left: "MongoDB", right: "Supabase" },
+  { left: "MYSQL", right: "Firebase" },
+  { left: "Figma", right: "Canva" },
 ];
 
 const Skills = () => {
