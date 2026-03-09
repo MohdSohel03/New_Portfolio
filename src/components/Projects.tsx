@@ -6,7 +6,7 @@ const projects = [
     title: "AI-Based Career Counselor Application",
     description: "An intelligent career guidance platform powered by AI that provides personalized career recommendations and learning pathways.",
     tech: ["React", "Python", "TensorFlow"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/AI-Based-Career-Counselor-Application",
     live: "#",
   },
   {
