@@ -6,14 +6,14 @@ const projects = [
     title: "AI-Based Career Counselor Application",
     description: "An intelligent career guidance platform powered by AI that provides personalized career recommendations and learning pathways.",
     tech: ["React", "Python", "TensorFlow"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/AI-Based-Career-Counselor-Application",
     live: "#",
   },
   {
     title: "AI Resume Builder Application",
     description: "An intelligent resume builder that uses AI to generate optimized resumes, suggest improvements, and match job descriptions.",
     tech: ["React", "Node.js", "OpenAI"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/AI-Resume-Builder-Application",
     live: "#",
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     title: "Personal Fitness Tracking Web Application",
     description: "A comprehensive fitness tracking app that monitors workouts, nutrition, progress, and goals with data visualization.",
     tech: ["React", "Firebase", "Chart.js"],
-    github: "https://github.com/",
+    github: "https://github.com/MohdSohel03/Personal-Fitness-Tracking-Web-Application",
     live: "#",
   },
   {
