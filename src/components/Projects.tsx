@@ -59,7 +59,6 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="subheading">Projects</p>
           <h2 className="heading-lg">My Projects</h2>
         </motion.div>
 

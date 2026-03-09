@@ -21,7 +21,6 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="subheading">Skills</p>
           <h2 className="heading-lg">My Skills</h2>
         </motion.div>
 
