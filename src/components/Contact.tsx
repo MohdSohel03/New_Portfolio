@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import { FiSend, FiMapPin, FiPhone, FiSend as FiEmail, FiGlobe } from "react-icons/fi";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import emailjs from "@emailjs/browser";
 import aboutPhoto from "@/assets/about-photo.png";
+
+// EmailJS Configuration - Replace these with your actual values
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 
 const contactInfo = [
   { icon: FiMapPin, title: "ADDRESS", text: "Mumbai, India" },
@@ -24,33 +30,42 @@ const Contact = () => {
     }
     setLoading(true);
 
-    // Save to database
-    const { error } = await supabase.from("contact_messages").insert({
-      name: form.name.trim(),
-      email: form.email.trim(),
-      subject: form.subject.trim() || null,
-      message: form.message.trim(),
-    });
-
-    if (error) {
-      toast.error("Failed to send message. Please try again.");
-      setLoading(false);
-      return;
-    }
-
-    // Send email notification
-    supabase.functions.invoke("send-contact-email", {
-      body: {
+    try {
+      // Save to database
+      const { error: dbError } = await supabase.from("contact_messages").insert({
         name: form.name.trim(),
         email: form.email.trim(),
-        subject: form.subject.trim() || undefined,
+        subject: form.subject.trim() || null,
         message: form.message.trim(),
-      },
-    }).catch((err) => console.error("Email notification failed:", err));
+      });
 
-    toast.success("Message sent! I'll get back to you soon.");
-    setForm({ name: "", email: "", subject: "", message: "" });
-    setLoading(false);
+      if (dbError) {
+        toast.error("Failed to send message. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      // Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name.trim(),
+          from_email: form.email.trim(),
+          subject: form.subject.trim() || "New contact form submission",
+          message: form.message.trim(),
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      toast.success("Message sent! I'll get back to you soon.");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Failed to send email notification. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
