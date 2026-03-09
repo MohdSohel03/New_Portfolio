@@ -62,7 +62,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-5 px-4 md:px-8">
         <button onClick={() => scrollTo("Home")} className="text-xl font-extrabold text-foreground tracking-tight uppercase">
-          SOHEL
+          Portfolio
         </button>
 
         {/* Desktop nav */}
