@@ -45,7 +45,7 @@ const projects = [
     tech: ["Python", "SQL"],
     image: inventoryImg,
     github: "https://github.com/MohdSohel03/inventory-pro-hub",
-    live: "#",
+    live: "https://invent-pro-ip.vercel.app/",
   },
 ];
 
