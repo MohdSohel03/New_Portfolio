@@ -20,7 +20,6 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="subheading">Services</p>
           <h2 className="heading-lg">My Services</h2>
         </motion.div>
 
