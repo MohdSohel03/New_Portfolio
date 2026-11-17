@@ -18,51 +18,52 @@ const Skills = () => {
     });
   }, []);
 
-  const leftColumn = skills.filter((_, i) => i % 2 === 0);
-  const rightColumn = skills.filter((_, i) => i % 2 === 1);
+  const columns = [skills.filter((_, index) => index % 2 === 0), skills.filter((_, index) => index % 2 === 1)];
 
   return (
     <section id="skills" className="section-padding bg-background">
       <div className="container mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 relative"
+          className="mb-14"
         >
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
-            <span className="text-[120px] md:text-[180px] font-black text-muted/5 select-none">
-              Skills
-            </span>
+          <h2 className="heading-lg">My Skills</h2>
+          <div className="mt-8 border-t border-border pt-8">
+            <h3 className="text-2xl font-bold text-foreground">Technical Skills</h3>
           </div>
-          <h2 className="heading-lg relative z-10">My Skills</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-x-20 gap-y-10">
-          {[leftColumn, rightColumn].map((column, colIdx) => (
-            <div key={colIdx} className="space-y-8">
-              {column.map((skill, i) => (
+        <div className="grid gap-x-12 gap-y-8 md:grid-cols-2 md:gap-x-16">
+          {columns.map((column, columnIndex) => (
+            <div key={columnIndex} className="space-y-7">
+              {column.map((skill, index) => (
                 <motion.div
                   key={skill.id}
-                  initial={{ opacity: 0, x: colIdx === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                 >
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-foreground font-medium">{skill.name}</span>
-                    <span className="text-foreground font-semibold">{skill.percentage}%</span>
+                  <div className="mb-2 flex items-center justify-between gap-4">
+                    <span className="font-semibold text-foreground">{skill.name}</span>
+                    <span className="shrink-0 text-sm text-muted-foreground">{skill.percentage}%</span>
                   </div>
-                  <div className="w-full bg-muted/20 h-2 rounded-full overflow-hidden">
+                  <div
+                    className="h-2.5 overflow-hidden rounded-full bg-muted"
+                    role="progressbar"
+                    aria-label={skill.name}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={skill.percentage}
+                  >
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.percentage}%` }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.1 + 0.2, ease: "easeOut" }}
-                      className="h-full bg-primary rounded-full"
+                      transition={{ duration: 0.8, delay: index * 0.08 + 0.12, ease: "easeOut" }}
+                      className="h-full rounded-full bg-primary"
                     />
                   </div>
                 </motion.div>
