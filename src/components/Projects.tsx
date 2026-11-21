@@ -39,7 +39,12 @@ const Projects = () => {
   }, []);
 
   const getImage = (project: Project) => {
-    return project.image_url || fallbackImages[project.title] || "/placeholder.svg";
+    const imageUrl = project.image_url?.trim();
+    const fallbackImage = fallbackImages[project.title];
+
+    // Source paths saved in the database are not available in a production build.
+    if (imageUrl && !imageUrl.startsWith("/src/assets/")) return imageUrl;
+    return fallbackImage || "/placeholder.svg";
   };
 
   return (
@@ -68,6 +73,10 @@ const Projects = () => {
                 <img
                   src={getImage(project)}
                   alt={project.title}
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = fallbackImages[project.title] || "/placeholder.svg";
+                  }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
