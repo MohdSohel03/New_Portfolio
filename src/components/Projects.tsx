@@ -18,6 +18,14 @@ const fallbackImages: Record<string, string> = {
   "Inventory Management System": inventoryImg,
 };
 
+const fallbackImagesByFilename: Record<string, string> = {
+  "project-career-counselor.jpg": careerImg,
+  "project-resume-builder.jpg": resumeImg,
+  "project-ecommerce.jpg": ecommerceImg,
+  "project-fitness.jpg": fitnessImg,
+  "project-inventory.jpg": inventoryImg,
+};
+
 interface Project {
   id: string;
   title: string;
@@ -38,9 +46,16 @@ const Projects = () => {
     });
   }, []);
 
+  const getFallbackImage = (project: Project) => {
+    const filename = project.image_url?.split(/[?#]/, 1)[0]?.split("/").pop();
+    return (filename ? fallbackImagesByFilename[filename] : undefined)
+      || fallbackImages[project.title]
+      || "/placeholder.svg";
+  };
+
   const getImage = (project: Project) => {
     const imageUrl = project.image_url?.trim();
-    const fallbackImage = fallbackImages[project.title];
+    const fallbackImage = getFallbackImage(project);
 
     // Source paths saved in the database are not available in a production build.
     if (imageUrl && !imageUrl.startsWith("/src/assets/")) return imageUrl;
@@ -75,7 +90,7 @@ const Projects = () => {
                   alt={project.title}
                   onError={(event) => {
                     event.currentTarget.onerror = null;
-                    event.currentTarget.src = fallbackImages[project.title] || "/placeholder.svg";
+                    event.currentTarget.src = getFallbackImage(project);
                   }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
