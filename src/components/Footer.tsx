@@ -1,4 +1,4 @@
-import { FiTwitter, FiFacebook, FiInstagram, FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 
 const links = ["Home", "About", "Services", "Projects", "Contact"];
 const services = ["Web Design", "Web Development", "AI Solutions", "Backend Development", "UI/UX Design"];
@@ -27,17 +27,13 @@ const Footer = () => {
               I am a BSc IT student and Full Stack Developer based in Mumbai, passionate about building scalable web applications and AI solutions.
             </p>
             <div className="flex gap-3">
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/MohdSohel03" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
-                <FiTwitter size={16} />
+                <FiGithub size={16} />
               </a>
-              <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/in/mohd-sohel-ansari/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
-                <FiFacebook size={16} />
-              </a>
-              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
-                <FiInstagram size={16} />
+                <FiLinkedin size={16} />
               </a>
             </div>
           </div>

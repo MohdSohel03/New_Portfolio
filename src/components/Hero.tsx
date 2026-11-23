@@ -42,11 +42,11 @@ const Hero = () => {
           </div>
 
           <div className="flex gap-6">
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/MohdSohel03" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"
               className="text-muted-foreground hover:text-primary transition-colors">
               <FiGithub size={20} />
             </a>
-            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/mohd-sohel-ansari/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"
               className="text-muted-foreground hover:text-primary transition-colors">
               <FiLinkedin size={20} />
             </a>
