@@ -1,0 +1,1 @@
+Admin routing checks the signed-in user's role through a Supabase RPC; database RLS remains authoritative because client route guards are not a security boundary.
